@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import pg from "pg";
 import earningsRoutes from "./routes/earnings.js";
 import expensesRoutes from "./routes/expenses.js";
-
+import authRoutes from "./routes/auth.js";
 // Loading the env variables from the env file 
 dotenv.config();
 
@@ -35,6 +35,7 @@ db.connect()
 
 app.use(earningsRoutes);
 app.use(expensesRoutes);
+app.use(authRoutes);
 
 
 app.get("/",(req,res)=>{
@@ -50,3 +51,4 @@ app.listen(port,()=>{
 });
 
 
+   
