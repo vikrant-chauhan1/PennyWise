@@ -8,17 +8,18 @@ const JWT_SECRET= process.env.JWT_SECRET;
 
 // user registration route
 
-router.post("/register",async(res,req)=>{
+router.post("/register",async(req,res)=>{
     const {email,password}= req.body;
 
-    if(!email || !password){
+    if(!email || !password || !email.includes("@") || password.length < 6){
         return res.status(400).json({message:"Email and password are required"});
     } 
 
     try {
         const user= await registerUser(email,password);
-        res.status(201).json({message:"User registered successfully"},user);
+        res.status(201).json({message:"User registered successfully",user});
     } catch (error) {
+        console.log(error);
         res.status(500).json({message:"Error registering user.",error})
         
     }
@@ -26,7 +27,7 @@ router.post("/register",async(res,req)=>{
 
 // user login route
 
-router.post("/login", async(res,req)=>{
+router.post("/login", async(req,res)=>{
     const {email,password}=req.body;
     if(!email || !password){
         return res.status(400).json({message:"Email and password are required"});
