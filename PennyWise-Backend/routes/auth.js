@@ -1,10 +1,17 @@
 import express from "express";
 import jwt from "jsonwebtoken";
 import { registerUser,authenticateUser } from "../models/auth.js";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 
 const router = express.Router();
 const JWT_SECRET= process.env.JWT_SECRET;
+
+console.log(JWT_SECRET); 
+
+
+  
 
 // user registration route
 
@@ -42,7 +49,8 @@ router.post("/login", async(req,res)=>{
         const token = jwt.sign({id:user.id,email:user.email},JWT_SECRET,{expiresIn:"1h"});
         res.status(200).json({message:"Login Successfull",token});
     } catch (error) {
-        res.status(500).json({message:"Error Loading In",error});
+        console.log(error);
+        res.status(500).json({message:"Error Logging In",error});
 
     }
 
