@@ -4,12 +4,18 @@ import pg from "pg";
 import earningsRoutes from "./routes/earnings.js";
 import expensesRoutes from "./routes/expenses.js";
 import authRoutes from "./routes/auth.js";
+import cors from "cors";
+
+
+
 // Loading the env variables from the env file 
 dotenv.config();
 
 const app = express();
 
 const port = process.env.PORT;
+// Enable CORS for all routes
+app.use(cors());
 
 // middleware to parse json (this is just like bodyparser)
 
