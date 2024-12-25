@@ -4,15 +4,30 @@ import bcrypt from "bcrypt";
 // register a user
 
 export async function registerUser(email,password){
-    const hashedPassword= await bcrypt.hash(password,10);
-    const query =`
-        INSERT INTO users (email,password)
-        VALUES ($1,$2)
-        RETURNING id,email,created_at;
-    `;
+    try {
+        const checkQuery = "SELECT id FROM users WHERE email = $1";
+        const checkResult = await db.query(checkQuery,[email]);
+        if(checkResult.rows.length >0){
+            throw new Error("Email already exists");
+        }
     
-    const result =await db.query(query,[email,hashedPassword]);
-    return result.rows[0];
+    
+        const hashedPassword= await bcrypt.hash(password,10);
+        const query =`
+            INSERT INTO users (email,password)
+            VALUES ($1,$2)
+            RETURNING id,email,created_at;
+        `;
+        
+        const result =await db.query(query,[email,hashedPassword]);
+        return result.rows[0];
+    } catch (error) {
+        console.error("Error registering user",error.message);
+        
+    }
+
+
+   
 }
 
 // authentictae a user

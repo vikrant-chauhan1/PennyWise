@@ -1,12 +1,13 @@
 import express from "express";
 import { addEarnings,getTotalEarnings } from "../models/earnings.js";
+import { authenticateToken } from "../middleware/authMiddleware.js";
 
 // router is used to add routes in seperate files improving structure and all
 const router = express.Router()
 
 // Route to add earnings
 
-router.post("/earnings",async(req,res)=>{
+router.post("/earnings",authenticateToken, async(req,res)=>{
     try{
         const {amount} = req.body;
         const newEarnings = await addEarnings(amount);
@@ -20,7 +21,7 @@ router.post("/earnings",async(req,res)=>{
 
 // route to get new earnings
 
-router.get("/earnings",async(req,res)=>{
+router.get("/earnings",authenticateToken,async(req,res)=>{
     try{
         const totalEarnings= await getTotalEarnings();
         res.status(200).json({totalEarnings});
