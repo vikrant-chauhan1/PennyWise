@@ -11,3 +11,5 @@ export const loginUser = async (email, password) => {
     throw error; // Rethrow the error so it can be caught in the component
   }
 };
+
+export default loginUser;

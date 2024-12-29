@@ -46,7 +46,7 @@ app.use(authRoutes);
 
 app.get("/",(req,res)=>{
     res.send("PennyWise backend is running !");
-
+ 
 }); 
 
 

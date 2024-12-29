@@ -5,7 +5,7 @@ dotenv.config();
 
 export const authenticateToken=(req,res,next)=>{
     const token = req.headers.authorization?.split(" ")[1];
-    if(token){
+    if(!token){
         return res.status(401).json({message:"Unauthorized"});
     }
     try {
@@ -17,3 +17,5 @@ export const authenticateToken=(req,res,next)=>{
         
     }
 };
+
+export default authenticateToken;

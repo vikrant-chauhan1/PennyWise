@@ -12,9 +12,11 @@ const isAuthorized = true;
 function App() {
     return (
        <div>
-         <Login />
-         {isAuthorized && (
-            <Router>
+         
+         {!isAuthorized ? (
+          <Login />
+         ) : (
+          <Router>
             <Navbar />
             <Routes>
                 
@@ -23,12 +25,14 @@ function App() {
                 <Route path="/earnings" element={<EarningsPage />} />
             </Routes>
          </Router>
-         )};
+         
+            
+        )};
             
 
             
 
-       </div>
+      </div>
     );
 }
 
