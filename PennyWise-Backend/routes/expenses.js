@@ -1,11 +1,12 @@
 import express from "express";
 import { getExpenses,addExpenses } from "../models/expenses.js";
+import authenticateToken from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
 // route to add expense
 
-router.post("/expenses",async(req,res)=>{
+router.post("/expenses",authenticateToken, async(req,res)=>{
     try {
         const {amount,category,notes}= req.body;
         const newExpense = await addExpenses(amount,category,notes);
@@ -20,7 +21,7 @@ router.post("/expenses",async(req,res)=>{
 
 // route to get all the expenses
 
-router.get("/expenses", async(req,res)=>{
+router.get("/expenses", authenticateToken, async(req,res)=>{
     try {
         const expenses = await getExpenses();
         res.status(200).json({expenses});

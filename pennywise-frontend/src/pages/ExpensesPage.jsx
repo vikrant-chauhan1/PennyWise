@@ -13,7 +13,14 @@ const ExpensesPage = () => {
   useEffect(()=>{
     const fetchExpense = async()=>{
       try {
-        const response = await axios.get("http://localhost:5000/expenses");
+        const token = localStorage.getItem("token");
+        if (!token) {
+          console.error("No token found in localStorage");
+          return;
+        }
+        const response = await axios.get("http://localhost:5000/expenses",{
+          headers: {Authorization: `Bearer ${token}`}
+        });
         setExpenses(response.data.expenses || []);
       } catch (error) {
         console.error("failed to fetch Expenses",error);
@@ -25,11 +32,21 @@ const ExpensesPage = () => {
 
   const handleAddExpense = async ()=>{
     try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        console.error("No token found in localStorage");
+        return;
+      }
       const response = await axios.post("http://localhost:5000/expenses",{
         amount,
         category,
         notes,
-      });
+      },
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    
+    );
       setExpenses((prev)=>[response.data.newExpense,...prev]);
       setSuccess(true);
       setAmount("");
@@ -94,14 +111,14 @@ const ExpensesPage = () => {
           <li key={index}>
             <h3>₹{expenses.amount} - {expenses.category} ({expenses.notes})</h3>
           </li>
-        ))};
+        ))}
       </ul>
         
       
 
       
     </div>
-  );
+  )
 };
 
 export default ExpensesPage;

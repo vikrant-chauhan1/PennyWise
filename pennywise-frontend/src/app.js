@@ -6,7 +6,7 @@ import SummaryPage from "./pages/SummaryPage";
 import ExpensesPage from './pages/ExpensesPage'; 
 import EarningsPage from './pages/EarningsPage'; 
 
-const isAuthorized = true;
+const isAuthorized =true;
 
 
 function App() {

@@ -2,10 +2,10 @@ import db from "../db.js";
 
 // ADDING THE EARNINGS TO THE DATABSE
 
-export const addEarnings = async(amount)=>{
+export const addEarnings = async(amount,notes)=>{
     const result= await db.query(
-        "INSERT INTO earnings (amount) VALUES ($1) RETURNING *",
-        [amount]
+        "INSERT INTO earnings (amount,notes) VALUES ($1,$2) RETURNING *",
+        [amount,notes]
     );
     return result.rows[0];
 };
@@ -19,3 +19,8 @@ export const getTotalEarnings = async()=>{
     return result.rows[0].total;
 
 };
+
+export const getEarnings = async()=>{
+    const result = await db.query("SELECT * FROM EARNINGS");
+    return result.rows;
+}

@@ -41,13 +41,13 @@ const SummaryPage =()=>{
        
         <div style={{padding: "2rem"}}>
             <h2>Summary</h2>
-            <p>Total Earnings : ₹{earnings} </p>
-            <p>Total Expenses : ₹{totalExpenses}</p>
+            <h3><p>Total Earnings : ₹{earnings} </p></h3>
+            <h3><p>Total Expenses : ₹{totalExpenses}</p></h3>
             <h3>Last Transactions</h3>
             <ul>
                 {expenses.slice(0,20).map((expense,index)=>(
                     <li key={index}>
-                        ₹{expense.amount} - {expense.category} ({expense.notes})
+                        <h4>₹{expense.amount} - {expense.category} ({expense.notes})</h4>
                     </li>
                 ))}
             </ul>
