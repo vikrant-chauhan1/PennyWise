@@ -1,11 +1,14 @@
 import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
 
+
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
+
   const [user, setUser] = useState(null); // Stores user details
   const [loading, setLoading] = useState(true); // Manages loading state
+ 
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -34,6 +37,8 @@ export const UserProvider = ({ children }) => {
   const logout = () => {
     localStorage.removeItem("token");
     setUser(null);
+    
+
   };
 
   return (

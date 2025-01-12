@@ -9,6 +9,7 @@ export const loginUser = async (email, password) => {
   } catch (error) {
     console.error("Error during login:", error); // Log the full error
     throw error; // Rethrow the error so it can be caught in the component
+    
   }
 };
 
@@ -16,7 +17,7 @@ export const registerUser = async (email,password)=>{
   try{
     const response = await axios.post(`${API_BASE}/register`,{email,password});
     return response;
-    alert("User Registered Successfully")
+    
   }catch(error){
     console.error("Error During Registering");
 

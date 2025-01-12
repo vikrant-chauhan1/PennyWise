@@ -6,6 +6,7 @@ import SummaryPage from "./pages/SummaryPage";
 import ExpensesPage from './pages/ExpensesPage'; 
 import EarningsPage from './pages/EarningsPage'; 
 import { UserContext } from './UserContext';
+import Register from './pages/Register';
 
 
 
@@ -20,13 +21,23 @@ function App() {
         <div>
          
          {!user ? (
-          <Login />
+          
+          
+          <Routes>
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Login />}/>
+          </Routes>
+          
+          
+          
          ) : (
           
            <>
               <Navbar />
               <Routes>
                 <Route path="/" element={<SummaryPage />} />
+                
                 
                 <Route path="/summary" element={<SummaryPage />} />
                 <Route path="/expenses" element={<ExpensesPage />} />
