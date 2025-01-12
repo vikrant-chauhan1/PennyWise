@@ -52,7 +52,7 @@ const EarningsPage = () => {
 
   return (
     <div style={{ padding: "2rem" }}>
-      <h1 style={{ color: "brown" }}>Earnings</h1>
+      <h1 style={{ color: "green" }}>EARNINGS</h1>
 
       <h3>Total Earnings: ₹{totalEarnings.toFixed(2)}</h3>
 

@@ -1,20 +1,32 @@
-import React,{use, useState} from "react";
+import React,{use, useContext, useState} from "react";
 import {TextField,Button,Card,Typography} from "@mui/material";
 
 import { loginUser } from "../api/auth";
 
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../UserContext";
+
+
+
+
 const Login = ()=>{
+    
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
     const[error,setError]=useState("");
+    const {setUser} = useContext(UserContext);
+    const navigate = useNavigate();
 
     const handleSubmit = async (e)=>{
-        e.preventDefault(); // Prevents the default browser behavior of submitting the form and refreshing the page.
+       /*  e.preventDefault(); */ // Prevents the default browser behavior of submitting the form and refreshing the page.
         try {
-            const response = await loginUser(email,password); // the email pass filled in the formis accessed here and sent to localhost thru axios req to get response
+            const response = await loginUser(email,password); // the email pass filled in the formis accessed here and sent to localhost thru axios req to get response\
+            console.log(response);
             const token = response.data.token;
             localStorage.setItem("token",token);
+            setUser(response.data.user)
             alert("login successfull!")
+            navigate("/")
         } catch (error) {
             console.log("yaha error h")
             setError(error.response?.data?.message || "Error logging in "); // IF INVALID CREDS THEN MESSAGE WILL BE COMMU AND IF ITS SOME OTHER ERROR THEN AFTER OR SIGN MESSAGE WILL PRINT
@@ -22,6 +34,11 @@ const Login = ()=>{
             
         }
     };
+    const handleRegisterRedirect=()=>{
+        navigate("/register")
+
+    }
+    
 
     return (
         <Card style={{padding:"2rem",maxWidth:"400px",margin:"2rem auto"}}>
@@ -59,9 +76,17 @@ const Login = ()=>{
                 <Button type="submit" variant="contained" color="primary">
                     Login
                 </Button>
+                
+                
                     
                 
             </form>
+            <Typography variant="body2" align="center" style={{ marginTop: "1rem" }}>
+            Don't have an account?{" "}
+            <Button color="primary" onClick={handleRegisterRedirect}>
+                Register
+            </Button>
+            </Typography>
 
         </Card>
 

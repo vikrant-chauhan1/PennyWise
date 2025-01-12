@@ -2,6 +2,7 @@ import express from "express";
 import jwt from "jsonwebtoken";
 import { registerUser,authenticateUser } from "../models/auth.js";
 import * as dotenv from "dotenv";
+import authenticateToken from "../middleware/authMiddleware.js";
 dotenv.config();
 
 
@@ -55,6 +56,13 @@ router.post("/login", async(req,res)=>{
     }
 
 
+});
+
+router.get("/validate-token", authenticateToken, (req, res) => {
+    
+    const user = req.user;
+    
+    res.status(200).json({ user });
 });
 
 export default router;

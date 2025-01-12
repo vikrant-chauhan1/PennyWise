@@ -12,4 +12,16 @@ export const loginUser = async (email, password) => {
   }
 };
 
-export default loginUser;
+export const registerUser = async (email,password)=>{
+  try{
+    const response = await axios.post(`${API_BASE}/register`,{email,password});
+    return response;
+    alert("User Registered Successfully")
+  }catch(error){
+    console.error("Error During Registering");
+
+  }
+}
+
+export default {loginUser , registerUser};
+  

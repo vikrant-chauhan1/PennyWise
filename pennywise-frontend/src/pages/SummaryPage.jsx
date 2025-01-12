@@ -40,7 +40,7 @@ const SummaryPage =()=>{
     return(
        
         <div style={{padding: "2rem"}}>
-            <h2>Summary</h2>
+            <h1 style={{color:"blue"}}>SUMMARY</h1>
             <h3><p>Total Earnings : ₹{earnings} </p></h3>
             <h3><p>Total Expenses : ₹{totalExpenses}</p></h3>
             <h3>Last Transactions</h3>
