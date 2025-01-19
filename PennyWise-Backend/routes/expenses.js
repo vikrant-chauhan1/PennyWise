@@ -9,7 +9,8 @@ const router = express.Router();
 router.post("/expenses",authenticateToken, async(req,res)=>{
     try {
         const {amount,category,notes}= req.body;
-        const newExpense = await addExpenses(amount,category,notes);
+        const userID = req.user.id;
+        const newExpense = await addExpenses(amount,category,notes,userID);
         res.status(200).json({newExpense});
         
     } catch (error) {
@@ -23,7 +24,8 @@ router.post("/expenses",authenticateToken, async(req,res)=>{
 
 router.get("/expenses", authenticateToken, async(req,res)=>{
     try {
-        const expenses = await getExpenses();
+        const userID = req.user.id;
+        const expenses = await getExpenses(userID);
         res.status(200).json({expenses});
     } catch (error) {
         res.status(500).json({message:"Error fetching expenses"})

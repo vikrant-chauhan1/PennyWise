@@ -10,7 +10,8 @@ const router = express.Router()
 router.post("/earnings",authenticateToken, async(req,res)=>{
     try{
         const {amount,notes} = req.body;
-        const newEarnings = await addEarnings(amount,notes);
+        const userID = req.user.id;
+        const newEarnings = await addEarnings(amount,notes,userID);
         res.status(201).json(newEarnings);
 
     } catch(error){
@@ -23,8 +24,9 @@ router.post("/earnings",authenticateToken, async(req,res)=>{
 
 router.get("/earnings",authenticateToken,async(req,res)=>{
     try{
-        const totalEarnings= await getTotalEarnings();
-        const earnings = await getEarnings();
+        const userID = req.user.id;
+        const totalEarnings= await getTotalEarnings(userID);
+        const earnings = await getEarnings(userID);
         res.status(200).json({earnings,totalEarnings});
     }catch (error){
         res.status(500).json({message : "error fetching earnings",error});

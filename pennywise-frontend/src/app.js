@@ -20,7 +20,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div>
+      <div >
         {/* If not logged in, show Login/Register */}
         {!user ? (
           <Routes>
