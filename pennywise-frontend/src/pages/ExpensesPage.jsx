@@ -55,6 +55,9 @@ const ExpensesPage = () => {
     } catch (error) {
       setError("Failed to add expenses. Please try again.");
       console.log(error);
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
       
     }
   }

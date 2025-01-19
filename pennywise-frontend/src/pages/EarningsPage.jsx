@@ -44,6 +44,7 @@ const EarningsPage = () => {
     } catch (error) {
       setError("Failed to add earning, Please try again.");
       console.log(error);
+      window.location.reload();
     }
   };
 

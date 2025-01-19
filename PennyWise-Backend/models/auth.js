@@ -43,7 +43,7 @@ export async function authenticateUser(email,password){
         return null; // no user found in the database
     }
     const user = result.rows[0];
-    const isPasswordValid = bcrypt.compare(password,user.password);
+    const isPasswordValid = await bcrypt.compare(password,user.password);
     if(!isPasswordValid){
         return null; // wrong password
     }
