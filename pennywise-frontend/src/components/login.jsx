@@ -20,7 +20,7 @@ const Login = () => {
       localStorage.setItem("token", token);
       setUser(response.data.user); // set user details in context
       console.log("user updated");
-      window.location.reload(); 
+      window.location.replace("/summary"); 
     } catch (error) {
       setError(error.response?.data?.message || "Error logging in");
     }
