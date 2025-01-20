@@ -1,0 +1,131 @@
+/* Login component */
+
+/* src/css/Login.css */
+
+.login-card {
+    background: linear-gradient(135deg, #85c47a, #bbdefb); /* Light blue gradient */
+    padding: 2rem;
+    max-width: 400px;
+    margin: 2rem auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .login-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #3f51b5; /* Blue */
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Adds space between input fields */
+  }
+  
+  .login-button {
+    background-color: #4caf50; /* Green */
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 0.75rem;
+    border-radius: 8px;
+  }
+  
+  .login-button:hover {
+    background-color: #388e3c; /* Darker green */
+  }
+  
+  .login-error {
+    color: #f44336; /* Red for error messages */
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  
+  .login-register-link {
+    text-align: center;
+    margin-top: 1rem;
+    color: #3f51b5; /* Blue */
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .login-register-link:hover {
+    text-decoration: underline;
+  }
+
+/* EARNINGS AND EXPENSES */
+
+.earnings-card, .expenses-card {
+  border-left: 5px solid #4caf50; /* Green border for earnings */
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.expenses-card {
+  border-left-color: #f44336; /* Red for expenses */
+}
+
+.amount {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.category {
+  font-size: 1rem;
+  color: #666;
+}
+
+/*  button style */
+
+.button-earnings {
+  cursor: pointer;
+  background-color: rgb(31, 95, 231); /* Initial blue color */
+  color: white;
+  border-radius: 10px;
+  font-size: 26px;
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px; /* Add some padding for better spacing */
+  border: none;
+  transition: all 0.3s ease-in-out; /* Smooth transition */
+}
+
+.button-earnings:hover {
+  transform: scale(1.05); /* Slightly enlarge the button */
+  background-color: rgb(80, 233, 177); /* Change to teal on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+
+
+.button-expenses {
+  cursor: pointer;
+  background-color: rgb(31, 95, 231); /* Initial blue color */
+  color: white;
+  border-radius: 10px;
+  font-size: 26px;
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px; /* Add some padding for better spacing */
+  border: none;
+  transition: all 0.3s ease-in-out; /* Smooth transition */
+}
+
+.button-expenses:hover {
+  transform: scale(1.05); /* Slightly enlarge the button */
+  background-color: rgb(245, 95, 78); /* Change to teal on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+
+
+

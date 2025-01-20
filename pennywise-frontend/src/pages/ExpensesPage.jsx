@@ -1,7 +1,8 @@
 import React,{useState,useEffect} from 'react';
 import { TextField,Button,Snackbar,MenuItem } from '@mui/material';
 import axios from 'axios';
-
+import "../css/components.css"
+import "../css/global.css";
 const ExpensesPage = () => {
   const [expenses,setExpenses] = useState([]);
   const [amount,setAmount]= useState("");
@@ -65,13 +66,13 @@ const ExpensesPage = () => {
 
   
   return (
-    <div style={{padding:"2rem"}}>
+    <div className='expenses-card'>
 
       <h1 style={{color:"brown"}}>EXPENSES</h1>
 
-      <h3>You Spent : ₹{totalExpensesForExpensePage.toFixed(2)} </h3>
+      <h3 className='amount'>You Spent : ₹{totalExpensesForExpensePage.toFixed(2)} </h3>
 
-      <h1>Add Expenses</h1>
+      <h1 className='heading-gradient'>Add Expenses</h1>
       <TextField
         label="Expense Amount"
         type="number"
@@ -87,6 +88,7 @@ const ExpensesPage = () => {
         onChange={(e) => setCategory(e.target.value)}
         fullWidth
         style={{ marginBottom: "1rem" }}
+        className='category'
       >
         <MenuItem value="Compulsory Spending">Compulsory</MenuItem>
         <MenuItem value="Miscellaneous Spending">Miscellaneous</MenuItem>
@@ -98,9 +100,9 @@ const ExpensesPage = () => {
         fullWidth
         style={{ marginBottom: "1rem" }}
       />
-      <Button variant="contained" onClick={handleAddExpense}>
-        Add Expense
-      </Button>
+      <button  onClick={handleAddExpense} className='button-expenses'>
+        Add expenses
+      </button>
       {error && <p style={{color:"red"}}>{error}</p>}
       <Snackbar 
         open = {success}

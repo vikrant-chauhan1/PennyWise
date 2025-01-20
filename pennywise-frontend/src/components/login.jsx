@@ -2,7 +2,9 @@ import React, { useContext, useState, useEffect } from "react";
 import { TextField, Button, Card, Typography } from "@mui/material";
 import { loginUser } from "../api/auth";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../UserContext";
+import { UserContext } from "../UserContext"; 
+import "../css/components.css";
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -33,11 +35,31 @@ const Login = () => {
   };
 
   return (
-    <Card style={{ padding: "2rem", maxWidth: "400px", margin: "2rem auto" }}>
-      <Typography variant="h5" gutterBottom>
+    <Card  
+    sx={{
+      background: "linear-gradient(135deg, #e3f2fd, #bbdefb)",
+      padding: "2rem",
+      borderRadius: "12px",
+      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+      maxWidth: "400px",
+      margin: "2rem auto",
+      color: "white",
+      textAlign: "center",
+    }}
+    
+    >
+      <Typography sx={{
+          fontSize:" 1.5rem",
+          fontWeight: "bold",
+          textAlign: "center",
+          marginBottom: "1rem",
+          color: "#3f51b5",
+
+
+      }}>
         Login
       </Typography>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="login-form">
         <TextField
           fullWidth
           label="Email"
@@ -58,7 +80,7 @@ const Login = () => {
           required
         />
         {error && (
-          <Typography color="error" variant="body2" gutterBottom>
+          <Typography className="login-error">
             {error}
           </Typography>
         )}
@@ -66,7 +88,7 @@ const Login = () => {
           Login
         </Button>
       </form>
-      <Typography variant="body2" align="center" style={{ marginTop: "1rem" }}>
+      <Typography className="login-register-link">
         Don't have an account?{" "}
         <Button color="primary" onClick={handleRegisterRedirect}>
           Register

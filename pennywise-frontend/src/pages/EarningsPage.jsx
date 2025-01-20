@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { TextField, Button, Table, Snackbar, TableBody, TableCell, TableContainer, TableRow, TableHead, Paper } from "@mui/material";
 import axios from "axios";
+import "../css/components.css";
 
 const EarningsPage = () => {
   const [earnings, setEarnings] = useState([]);
@@ -52,10 +53,10 @@ const EarningsPage = () => {
   const totalEarnings = earnings.length > 0 ? earnings.reduce((acc, earning) => acc + Number(earning.amount), 0) : 0;
 
   return (
-    <div style={{ padding: "2rem" }}>
+    <div className="earnings-card">
       <h1 style={{ color: "green" }}>EARNINGS</h1>
 
-      <h3>Total Earnings: ₹{totalEarnings.toFixed(2)}</h3>
+      <h3 className="amount">Total Earnings: ₹{totalEarnings.toFixed(2)}</h3>
 
       <h2>Add Earnings</h2>
       <TextField
@@ -73,9 +74,9 @@ const EarningsPage = () => {
         fullWidth
         style={{ marginBottom: "1rem" }}
       />
-      <Button variant="contained" color="primary" onClick={handleAddEarnings}>
+      <button className="button-earnings" onClick={handleAddEarnings}>
         Add Earnings
-      </Button>
+      </button>
       {error && <p style={{ color: "red" }}>{error}</p>}
 
       <Snackbar
