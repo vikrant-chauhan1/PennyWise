@@ -43,10 +43,10 @@ const SummaryPage =()=>{
         <div className="body-div">
             <div style={{padding: "2rem"}}>
                 <h1 style={{color:""}}>SUMMARY</h1>
-                <h3><p>Total Earnings : ₹{earnings} </p></h3>
-                <h3><p>Total Expenses : ₹{totalExpenses}</p></h3>
-                <h3><p>Expected Savings :₹{expectedSavings}</p></h3>
-                <h3>Last Transactions</h3>
+                <h2><p>Total Earnings : ₹{earnings} </p></h2>
+                <h2><p>Total Expenses : ₹{totalExpenses}</p></h2>
+                <h2><p>Expected Savings :₹{expectedSavings}</p></h2>
+                <h1>LAST TRANSACTIONS</h1>
                 <ul className="interactive-list">
                 {expenses.slice(0,20).map((expense,index)=>(
                     <li key={index} className="interactive-list-item">
