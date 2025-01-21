@@ -66,62 +66,64 @@ const ExpensesPage = () => {
 
   
   return (
-    <div className='expenses-card'>
+    <div className='body-div'>
+          <div className='expenses-card'>
 
-      <h1 style={{color:"brown"}}>EXPENSES</h1>
+<h1 style={{color:"brown"}}>EXPENSES</h1>
 
-      <h3 className='amount'>You Spent : ₹{totalExpensesForExpensePage.toFixed(2)} </h3>
+<h3 className='amount'>You Spent : ₹{totalExpensesForExpensePage.toFixed(2)} </h3>
 
-      <h1 className='heading-gradient'>Add Expenses</h1>
-      <TextField
-        label="Expense Amount"
-        type="number"
-        value={amount}
-        onChange={(e)=>setAmount(e.target.value)}
-        fullWidth
-        style={{marginBottom:"1rem"}} 
-      />
-      <TextField
-        select
-        label="Category"
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
-        fullWidth
-        style={{ marginBottom: "1rem" }}
-        className='category'
-      >
-        <MenuItem value="Compulsory Spending">Compulsory</MenuItem>
-        <MenuItem value="Miscellaneous Spending">Miscellaneous</MenuItem>
-      </TextField>
-      <TextField
-        label="Notes"
-        value={notes}
-        onChange={(e) => setNotes(e.target.value)}
-        fullWidth
-        style={{ marginBottom: "1rem" }}
-      />
-      <button  onClick={handleAddExpense} className='button-expenses'>
-        Add expenses
-      </button>
-      {error && <p style={{color:"red"}}>{error}</p>}
-      <Snackbar 
-        open = {success}
-        autoHideDuration={3000}
-        onClose={()=>setSuccess(false)}
-        message="Expense added successfully"     
-      />
-      <h3>All Expense</h3>
-      <ul>
-        {expenses.map((expenses,index)=>(
-          <li key={index}>
-            <h3>₹{expenses.amount} - {expenses.category} ({expenses.notes})</h3>
-          </li>
-        ))}
-      </ul>
-        
-      
+<h1 className='heading-gradient'>Add Expenses</h1>
+<TextField
+  label="Expense Amount"
+  type="number"
+  value={amount}
+  onChange={(e)=>setAmount(e.target.value)}
+  fullWidth
+  style={{marginBottom:"1rem"}} 
+/>
+<TextField
+  select
+  label="Category"
+  value={category}
+  onChange={(e) => setCategory(e.target.value)}
+  fullWidth
+  style={{ marginBottom: "1rem" }}
+  className='category'
+>
+  <MenuItem value="Compulsory Spending">Compulsory</MenuItem>
+  <MenuItem value="Miscellaneous Spending">Miscellaneous</MenuItem>
+</TextField>
+<TextField
+  label="Notes"
+  value={notes}
+  onChange={(e) => setNotes(e.target.value)}
+  fullWidth
+  style={{ marginBottom: "1rem" }}
+/>
+<button  onClick={handleAddExpense} className='button-expenses'>
+  Add expenses
+</button>
+{error && <p style={{color:"red"}}>{error}</p>}
+<Snackbar 
+  open = {success}
+  autoHideDuration={3000}
+  onClose={()=>setSuccess(false)}
+  message="Expense added successfully"     
+/>
+<h3>All Expense</h3>
+<ul className='interactive-list'>
+  {expenses.map((expenses,index)=>(
+    <li key={index} className='interactive-list-item'>
+      <h3>₹{expenses.amount} - {expenses.category} ({expenses.notes})</h3>
+    </li>
+  ))}
+</ul>
+  
 
-      
+
+
+</div>
     </div>
   )
 };

@@ -56,7 +56,7 @@ const Login = () => {
           color: "#3f51b5",
 
 
-      }}>
+        }}>
         Login
       </Typography>
       <form onSubmit={handleSubmit} className="login-form">

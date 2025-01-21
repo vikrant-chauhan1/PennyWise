@@ -92,7 +92,7 @@ const EarningsPage = () => {
         <p>Loading earnings...</p>
       ) : (
         <TableContainer component={Paper}>
-          <Table>
+          <Table >
             <TableHead>
               <TableRow>
                 <TableCell>Amount</TableCell>
