@@ -34,34 +34,34 @@ const SummaryPage = () => {
                 <div className="card">
                     <div><img src="earnings.png" alt="Earnings" /></div>
                     <div>
-                        <h1 style={{ color: 'green' }}>Earnings</h1>
-                        <p>₹{earnings}</p>
+                        <h1 >Earnings</h1>
+                        <p style={{ color: 'green' }}>₹{earnings}</p>
                     </div>
                 </div>
                 <div className="card">
                     <div><img src="expenses.png" alt="Expenses" /></div>
                     <div>
-                        <h1 style={{ color: 'red' }}>Expenses</h1>
-                        <p>₹{totalExpenses}</p>
+                        <h1 >Expenses</h1>
+                        <p style={{ color: 'red' }}>₹{totalExpenses}</p>
                     </div>
                 </div>
                 <div className="card">
                     <div><img src="savings.png" alt="Savings" /></div>
                     <div>
-                        <h1 style={{ color: 'darkgreen' }}>Savings</h1>
-                        <p>₹{expectedSavings}</p>
+                        <h1 >Savings</h1>
+                        {expectedSavings >0 ? 
+                        <p style={{ color: 'darkgreen' }}>₹{expectedSavings}</p>
+                        :
+                        <p style={{ color: 'red' }}>₹{expectedSavings}</p>
+                        }
+                        
                     </div>
                 </div>
             </div>
 
+             
             <div>
-                <h2>Expense History</h2>
-                {/* Render expense history dynamically if required */}
-            </div>
-
-            <div className="section2">
-                {/* Chart component or placeholder */}
-                <p>Chart here</p>
+                <h2>Last Transactions </h2>
             </div>
 
             <div className="section-transactions">
@@ -76,3 +76,13 @@ const SummaryPage = () => {
 };
 
 export default SummaryPage;
+/*<div>
+<h2>Expense History</h2>
+{ Render expense history dynamically if required }
+</div>
+
+<div className="section2">
+{ Chart component or placeholder }
+<p>Chart here</p>
+</div> 
+*/

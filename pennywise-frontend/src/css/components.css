@@ -132,15 +132,17 @@
   list-style-type: none;
   padding: 0;
   margin: 0;
-  max-width: 1000px;
+  max-width: 100%;
   margin: 1rem ;
   font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
 }
 
 /* Styling individual list items */
 .interactive-list-item {
   padding: 10px;
-  background-color: #f9f9f9;
+  /* background-color: #f9f9f9 */;
+  color: #1E90FF;
   border-radius: 8px;
   margin-bottom: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -154,11 +156,6 @@
   transform: translateY(-5px); /* Slightly lift the item */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* More prominent shadow */
 }
-h1, h2, h3, h4 {
-  background: linear-gradient(to right, #141017, #e5990b);
-  -webkit-background-clip: text;
-  color: transparent;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-}
+
 
 

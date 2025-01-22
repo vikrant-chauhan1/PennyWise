@@ -50,7 +50,7 @@ h1, h2, h3, h4 {
 .section2 {
     height: 400px;
     width: 100%; /* Replace 100vw with 100% */
-    background-color: whitesmoke;
+    background-color:whitesmoke;
     padding: 20px 5%;
     display: flex;
     justify-content: center;
@@ -60,7 +60,7 @@ h1, h2, h3, h4 {
 
 
 .card {
-    background-color: whitesmoke;
+    background-color:whitesmoke;
     width: 22%; 
     height: 300px; /* Use a fixed height to avoid uneven scaling */
     border-radius: 10px; 
@@ -89,8 +89,9 @@ h1, h2, h3, h4 {
 }
 
 .card p {
-    font-size: 22px; /* Adjust font size for better readability */
-    margin: 0; /* Remove default margin */
-    text-align: center; /* Center align text */
+    font-size: 25px; 
+    margin: 0; 
+    text-align: center; 
+    
     
 }
