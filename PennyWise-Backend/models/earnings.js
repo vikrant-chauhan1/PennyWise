@@ -24,3 +24,10 @@ export const getEarnings = async(userID)=>{
     const result = await db.query("SELECT * FROM EARNINGS WHERE user_id = $1",[userID]);
     return result.rows;
 }
+
+export const updateEarnings = async(amount ,notes,id,userID)=>{
+    const result = await db.query("UPDATE earnings SET amount = $1 , notes = $2 WHERE id = $3 AND user_id = $4 RETURNING *",[amount,notes,id,userID]);
+    
+    return result;
+    
+}

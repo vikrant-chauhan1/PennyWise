@@ -1,5 +1,5 @@
 import express from "express";
-import { addEarnings,getEarnings,getTotalEarnings } from "../models/earnings.js";
+import { addEarnings,getEarnings,getTotalEarnings, updateEarnings } from "../models/earnings.js";
 import { authenticateToken } from "../middleware/authMiddleware.js";
 
 // router is used to add routes in seperate files improving structure and all
@@ -33,5 +33,23 @@ router.get("/earnings",authenticateToken,async(req,res)=>{
     
     }
 });
+
+router.put("/earnings/:id" , authenticateToken , async(req,res)=>{
+    try {
+        const {id} = req.params;
+        const {amount , notes} = req.body;
+        const userID= req.user.id;
+
+        const result = await updateEarnings(amount,notes,id,userID);
+        if(result.rowCount === 0){
+            return res.status(404).json({message:"Earnings not found or unauthorized"});
+
+        }
+        res.status(200).json(result.rows[0]);
+    } catch (error) {
+        res.status(500).json({message:"Error updating earnings"});
+        
+    }
+})
 
 export default router;
