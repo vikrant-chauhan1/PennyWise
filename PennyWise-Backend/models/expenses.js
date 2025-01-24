@@ -19,3 +19,9 @@ export const getExpenses = async (userID)=>{
     return result.rows;
 }
 
+export const deleteExpenseById = async (id,userID)=>{
+    const result = await db.query("DELETE FROM expenses WHERE id = $1 AND user_id = $2",[id,userID]);
+    console.log(result);
+    return result;
+}
+

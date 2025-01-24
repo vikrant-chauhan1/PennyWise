@@ -62,6 +62,24 @@ const ExpensesPage = () => {
       
     }
   }
+  const handleDelete = async(expensesID)=>{
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.delete(`http://localhost:5000/expenses/${expensesID}`,
+        {headers:{Authorization : `Bearer ${token}`}}
+      );
+
+      console.log(response.data.message);
+
+      setExpenses((prev)=>prev.filter((expense)=>expense.id!== expensesID))
+      
+
+     
+    } catch (error) {
+      console.error("Error deleteing expense",error);
+      
+    }
+  }
   const totalExpensesForExpensePage = expenses.reduce((acc,expense)=>acc + parseFloat(expense.amount),0);
 
   
@@ -115,7 +133,9 @@ const ExpensesPage = () => {
 <ul className='interactive-list'>
   {expenses.map((expenses,index)=>(
     <li key={index} className='interactive-list-item'>
+      
       <h3>₹{expenses.amount} - {expenses.category} ({expenses.notes})</h3>
+      <Button onClick={()=>handleDelete(expenses.id)}>Delete</Button>
     </li>
   ))}
 </ul>
