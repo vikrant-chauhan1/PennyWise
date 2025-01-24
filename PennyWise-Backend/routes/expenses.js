@@ -51,6 +51,6 @@ router.delete("/expenses/:id",authenticateToken , async(req,res)=>{
         res.status(500).json({message:"Error deleting the expense",error});
         
     }
-});
+}); 
 
 export default router;
