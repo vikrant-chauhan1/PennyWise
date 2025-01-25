@@ -1,19 +1,15 @@
-import pg from "pg";
+import { Client } from 'pg'; 
 
-
-const db= new pg.Client({
-    user:"postgres",
-    host:"localhost",
-    database:"PennyWise",
-    password:"Avon@123",
-    port:5432,
+const db = new Client({
+  connectionString: process.env.DATABASE_URL, 
+  ssl: {
+    rejectUnauthorized: false,  // Necessary for Render's SSL connection
+  },
 });
 
-// connecting to the database
-
+// Connecting to the database
 db.connect()
-    .then(()=>console.log("connected to postgresSQL database"))
-    .catch((err)=> console.error("connection error", err.stack));
-
+  .then(() => console.log("Connected to PostgreSQL database"))
+  .catch((err) => console.error("Connection error", err.stack));
 
 export default db;
