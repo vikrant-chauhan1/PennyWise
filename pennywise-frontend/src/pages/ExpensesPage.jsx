@@ -55,7 +55,7 @@ const ExpensesPage = () => {
       setNotes("");
     } catch (error) {
       setError("Failed to add expenses. Please try again.");
-      console.log(error);
+      
       setTimeout(() => {
         window.location.reload();
       }, 2000);
@@ -69,7 +69,7 @@ const ExpensesPage = () => {
         {headers:{Authorization : `Bearer ${token}`}}
       );
 
-      console.log(response.data.message);
+      
 
       setExpenses((prev)=>prev.filter((expense)=>expense.id!== expensesID))
       

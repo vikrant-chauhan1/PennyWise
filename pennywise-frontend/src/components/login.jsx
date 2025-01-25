@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { TextField, Button, Card, Typography,Box } from "@mui/material";
 import { loginUser } from "../api/auth";
 import { useNavigate } from "react-router-dom";
@@ -17,11 +17,11 @@ const Login = () => {
     e.preventDefault(); // Prevents the default browser behavior (page reload) on form submission
     try {
       const response = await loginUser(email, password); // send credentials to backend
-      console.log(response);
+     
       const token = response.data.token;
       localStorage.setItem("token", token);
       setUser(response.data.user); // set user details in context
-      console.log("user updated");
+      
       window.location.replace("/summary"); 
     } catch (error) {
       setError(error.response?.data?.message || "Error logging in");

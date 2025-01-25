@@ -21,7 +21,7 @@ const EarningsPage = () => {
         const response = await axios.get("http://localhost:5000/earnings", {
           headers: { Authorization: `Bearer ${token}` },
         });
-        console.log(response.data);
+        
         setEarnings(response.data.earnings);
         setLoading(false);
       } catch (error) {
@@ -40,14 +40,14 @@ const EarningsPage = () => {
       }, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      console.log(response.data);
+      
       setEarnings((prev) => [response.data, ...prev]);
       setSuccess(true);
       setAmount("");
       setNotes("");
     } catch (error) {
       setError("Failed to add earning, Please try again.");
-      console.log(error);
+      
       window.location.reload();
     }
   };
