@@ -1,5 +1,5 @@
-import pkg from 'pg'; // CommonJS import
-const { Pool } = pkg;
+import pkg from 'pg'; 
+const { Pool } = pkg; 
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
@@ -8,8 +8,9 @@ const pool = new Pool({
   },
 });
 
-db.connect()
+
+pool.connect()
   .then(() => console.log("Connected to PostgreSQL database"))
   .catch((err) => console.error("Connection error", err.stack));
 
-export default db;
+export default pool;  
