@@ -18,7 +18,7 @@ const EarningsPage = () => {
     const fetchEarnings = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:5000/earnings", {
+        const response = await axios.get("https://pennywise-jabt.onrender.com/earnings", {
           headers: { Authorization: `Bearer ${token}` },
         });
         
@@ -34,7 +34,7 @@ const EarningsPage = () => {
   const handleAddEarnings = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.post("http://localhost:5000/earnings", {
+      const response = await axios.post("https://pennywise-jabt.onrender.com/earnings", {
         amount,
         notes,
       }, {
@@ -61,7 +61,7 @@ const EarningsPage = () => {
     try {
       console.log("put req starts")
       const token = localStorage.getItem("token");
-      const response = await axios.put(`http://localhost:5000/earnings/${editingEarning.id}`,
+      const response = await axios.put(`https://pennywise-jabt.onrender.com/earnings/${editingEarning.id}`,
       {amount:editingEarning.amount , notes:editingEarning.notes},
       {headers: {Authorization : `Bearer ${token}` }}
       

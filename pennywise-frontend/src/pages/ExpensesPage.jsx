@@ -19,7 +19,7 @@ const ExpensesPage = () => {
           console.error("No token found in localStorage");
           return;
         }
-        const response = await axios.get("http://localhost:5000/expenses",{
+        const response = await axios.get("https://pennywise-jabt.onrender.com/expenses",{
           headers: {Authorization: `Bearer ${token}`}
         });
         setExpenses(response.data.expenses || []);
@@ -38,7 +38,7 @@ const ExpensesPage = () => {
         console.error("No token found in localStorage");
         return;
       }
-      const response = await axios.post("http://localhost:5000/expenses",{
+      const response = await axios.post("https://pennywise-jabt.onrender.com/expenses",{
         amount,
         category,
         notes,
@@ -65,7 +65,7 @@ const ExpensesPage = () => {
   const handleDelete = async(expensesID)=>{
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.delete(`http://localhost:5000/expenses/${expensesID}`,
+      const response = await axios.delete(`https://pennywise-jabt.onrender.com/expenses/${expensesID}`,
         {headers:{Authorization : `Bearer ${token}`}}
       );
 

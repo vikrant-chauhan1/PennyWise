@@ -22,7 +22,7 @@ export const UserProvider = ({ children }) => {
       }
 
       try {
-        const response = await axios.get("http://localhost:5000/validate-token", {
+        const response = await axios.get("https://pennywise-jabt.onrender.com/validate-token", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUser(response.data.user); // Populate user state

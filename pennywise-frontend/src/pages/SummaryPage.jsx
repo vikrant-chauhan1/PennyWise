@@ -9,11 +9,11 @@ const SummaryPage = () => {
         const fetchSummary = async () => {
             try {
                 const token = localStorage.getItem("token");
-                const earningsResponse = await axios.get("http://localhost:5000/earnings", {
+                const earningsResponse = await axios.get("https://pennywise-jabt.onrender.com/earnings", {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
-                const expensesResponse = await axios.get("http://localhost:5000/expenses", {
+                const expensesResponse = await axios.get("https://pennywise-jabt.onrender.com/expenses", {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 setEarnings(earningsResponse.data.totalEarnings || 0);
