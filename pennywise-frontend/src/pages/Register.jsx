@@ -17,7 +17,7 @@ const Register = ()=>{
             return;
         }
         try {
-            const reponse = await registerUser(email,password);
+            await registerUser(email,password);
             alert("Registration Successfull");
             navigate("/")
         } catch (error) {

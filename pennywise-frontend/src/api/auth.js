@@ -24,5 +24,7 @@ export const registerUser = async (email,password)=>{
   }
 }
 
-export default {loginUser , registerUser};
+const authApi = { loginUser, registerUser };
+
+export default authApi;
   

@@ -65,7 +65,7 @@ const ExpensesPage = () => {
   const handleDelete = async(expensesID)=>{
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.delete(`https://pennywise-jabt.onrender.com/expenses/${expensesID}`,
+      await axios.delete(`https://pennywise-jabt.onrender.com/expenses/${expensesID}`,
         {headers:{Authorization : `Bearer ${token}`}}
       );
 
