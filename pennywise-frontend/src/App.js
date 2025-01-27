@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { BrowserRouter as  Routes, Route, BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Correct imports
 import { UserContext } from './UserContext';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
@@ -10,18 +10,15 @@ import EarningsPage from './pages/EarningsPage';
 
 function App() {
   const { user, loading } = useContext(UserContext);
-  
 
   if (loading) {
     return <p>Loading...</p>;
   }
-  
-  
 
   return (
-    <BrowserRouter>
-      <div >
-        {/* If not logged in, show Login/Register */}
+    <Router> 
+      <div>
+       
         {!user ? (
           <Routes>
             <Route path="/register" element={<Register />} />
@@ -41,7 +38,7 @@ function App() {
           </>
         )}
       </div>
-    </BrowserRouter>
+    </Router>
   );
 }
 
