@@ -21,7 +21,7 @@ const EarningsPage = () => {
         const response = await axios.get("https://pennywise-jabt.onrender.com/earnings", {
           headers: { Authorization: `Bearer ${token}` },
         });
-        
+        console.log(response.data);
         setEarnings(response.data.earnings);
         setLoading(false);
       } catch (error) {
@@ -40,14 +40,14 @@ const EarningsPage = () => {
       }, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      
+      console.log(response.data);
       setEarnings((prev) => [response.data, ...prev]);
       setSuccess(true);
       setAmount("");
       setNotes("");
     } catch (error) {
       setError("Failed to add earning, Please try again.");
-      
+      console.log(error);
       window.location.reload();
     }
   };
@@ -92,20 +92,45 @@ const EarningsPage = () => {
 
       <h2>Add Earnings</h2>
       <TextField
-        label="Earnings Amount"
-        type="number"
-        value={amount}
-        onChange={(e) => setAmount(e.target.value)}
-        fullWidth
-        style={{ marginBottom: "1rem" }}
-      />
-      <TextField
-        label="Notes"
-        value={notes}
-        onChange={(e) => setNotes(e.target.value)}
-        fullWidth
-        style={{ marginBottom: "1rem" }}
-      />
+  label="Earnings Amount"
+  type="number"
+  value={amount}
+  onChange={(e) => setAmount(e.target.value)}
+  fullWidth
+  sx={{
+    marginBottom: "1rem",
+    backgroundColor: "#f5f5f5",
+    borderRadius: "5px",
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": { borderColor: "#ccc" },
+      "&:hover fieldset": { borderColor: "#888" },
+      "&.Mui-focused fieldset": { borderColor: "#555" },
+    },
+    "& .MuiInputBase-input": { color: "#333" },
+    "& .MuiInputLabel-root": { color: "#666" },
+    "& .MuiInputLabel-root.Mui-focused": { color: "#444" },
+  }}
+/>
+<TextField
+  label="Notes"
+  value={notes}
+  onChange={(e) => setNotes(e.target.value)}
+  fullWidth
+  sx={{
+    marginBottom: "1rem",
+    backgroundColor: "#f5f5f5",
+    borderRadius: "5px",
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": { borderColor: "#ccc" },
+      "&:hover fieldset": { borderColor: "#888" },
+      "&.Mui-focused fieldset": { borderColor: "#555" },
+    },
+    "& .MuiInputBase-input": { color: "#333" },
+    "& .MuiInputLabel-root": { color: "#666" },
+    "& .MuiInputLabel-root.Mui-focused": { color: "#444" },
+  }}
+/>
+
       <button className="button-earnings" onClick={handleAddEarnings}>
         Add Earnings
       </button>
@@ -123,31 +148,40 @@ const EarningsPage = () => {
       {loading ? (
         <p>Loading earnings...</p>
       ) : (
-        <TableContainer component={Paper}>
-          <Table >
-            <TableHead>
-              <TableRow>
-                <TableCell>Amount</TableCell>
-                <TableCell>Notes</TableCell>
-                <TableCell>Date</TableCell>
-                
-                
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {earnings.map((earning, index) => (
-                <TableRow key={index}>
-                  <TableCell>{earning.amount}</TableCell>
-                  <TableCell>{earning.notes}</TableCell>
-                  <TableCell>{new Date(earning.created_at).toLocaleString()}</TableCell>
-                  <TableCell>
-                  <Button onClick={()=>handleEdit(earning)}>Edit</Button>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+        <TableContainer component={Paper} sx={{ backgroundColor: "#f5f5f5", borderRadius: "10px", boxShadow: "0px 4px 10px rgba(0,0,0,0.1)" }}>
+  <Table>
+    <TableHead>
+      <TableRow sx={{ backgroundColor: "#e0e0e0" }}>
+        <TableCell sx={{ fontWeight: "bold", color: "#333" }}>Amount</TableCell>
+        <TableCell sx={{ fontWeight: "bold", color: "#333" }}>Notes</TableCell>
+        <TableCell sx={{ fontWeight: "bold", color: "#333" }}>Date</TableCell>
+        <TableCell sx={{ fontWeight: "bold", color: "#333" }}>Actions</TableCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      {earnings.map((earning, index) => (
+        <TableRow key={index} sx={{ backgroundColor: index % 2 === 0 ? "#f0f0f0" : "#ffffff" }}>
+          <TableCell>{earning.amount}</TableCell>
+          <TableCell>{earning.notes}</TableCell>
+          <TableCell>{new Date(earning.created_at).toLocaleString()}</TableCell>
+          <TableCell>
+            <Button
+              onClick={() => handleEdit(earning)}
+              sx={{
+                color: "#555",
+                backgroundColor: "#ddd",
+                "&:hover": { backgroundColor: "#ccc", color: "#222" },
+              }}
+            >
+              Edit
+            </Button>
+          </TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+</TableContainer>
+
       )}
 
       <Dialog open={openEditModal} onClose={()=>setOpenEditModal(false)} aria-labelledby="edit-dialog-title">

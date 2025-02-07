@@ -6,33 +6,57 @@ import { UserContext } from "../UserContext";
 const Navbar=()=>{
 
     const {logout} = useContext(UserContext);
-   return(
-        <AppBar position="static">
-            <Toolbar>
-                <Typography variant="h6" sx={{flexGrow:1}}>
-                    PennyWise
+    return (
+        <AppBar 
+    position="static" 
+    sx={{ 
+        backgroundColor: "#0C0C0C", 
+        borderBottom: "2px solid grey" 
+    }}
+>
+    <Toolbar>
+        <Typography variant="h6" sx={{ flexGrow: 1, color: "#fff" }}>
+            PennyWise
+        </Typography>
+        <Button 
+            color="inherit" 
+            component={Link} 
+            to="/summary"
+            sx={{ '&:hover': { backgroundColor: "grey" } }}
+        >
+            Summary
+        </Button>
+        <Button 
+            color="inherit" 
+            component={Link} 
+            to="/expenses"
+            sx={{ '&:hover': { backgroundColor: "grey" } }}
+        >
+            Expenses
+        </Button>
+        <Button 
+            color="inherit" 
+            component={Link} 
+            to="/earnings"
+            sx={{ '&:hover': { backgroundColor: "grey" } }}
+        >
+            Earnings
+        </Button>
+        <Button 
+            color="inherit" 
+            component={Link} 
+            onClick={logout}
+            sx={{ '&:hover': { backgroundColor: "grey" } }}
+        >
+            Logout
+        </Button>
+    </Toolbar>
+</AppBar>
 
-                </Typography>
-                <Button color="inherit" component={Link} to="/summary">
-                    Summary
-
-                </Button>
-                <Button color="inherit" component={Link} to="/expenses">
-                    Expenses
-
-                </Button>
-                <Button color="inherit" component={Link} to="/earnings">
-                     Earnings
-
-                </Button>
-                <Button color="inherit" component={Link} onClick={logout}>
-                     Logout
-
-                </Button>
-            </Toolbar>
-
-        </AppBar>
     );
+        
+        
+    
 };
 
 export default Navbar;

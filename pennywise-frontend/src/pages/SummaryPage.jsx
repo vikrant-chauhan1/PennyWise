@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+
 const SummaryPage = () => {
     const [earnings, setEarnings] = useState(0);
     const [expenses, setExpenses] = useState([]);
@@ -76,13 +77,3 @@ const SummaryPage = () => {
 };
 
 export default SummaryPage;
-/*<div>
-<h2>Expense History</h2>
-{ Render expense history dynamically if required }
-</div>
-
-<div className="section2">
-{ Chart component or placeholder }
-<p>Chart here</p>
-</div> 
-*/

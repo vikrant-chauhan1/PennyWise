@@ -1,160 +1,262 @@
-/* Login component */
 
-/* src/css/Login.css */
-
-.login-card {
-    background: linear-gradient(135deg, #85c47a, #bbdefb); /* Light blue gradient */
-    padding: 2rem;
-    max-width: 400px;
-    margin: 2rem auto;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  .login-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 1rem;
-    color: #3f51b5; /* Blue */
-  }
-  
-  .login-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem; /* Adds space between input fields */
-  }
-  
-  .login-button {
-    background-color: #4caf50; /* Green */
-    color: white;
-    font-weight: bold;
-    text-transform: uppercase;
-    padding: 0.75rem;
-    border-radius: 8px;
-  }
-  
-  .login-button:hover {
-    background-color: #388e3c; /* Darker green */
-  }
-  
-  .login-error {
-    color: #f44336; /* Red for error messages */
-    font-size: 0.9rem;
-    text-align: center;
-  }
-  
-  .login-register-link {
-    text-align: center;
-    margin-top: 1rem;
-    color: #3f51b5; /* Blue */
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  .login-register-link:hover {
-    text-decoration: underline;
-  }
-
-/* EARNINGS AND EXPENSES */
-
-.earnings-card, .expenses-card {
-  border-left: 5px solid #4caf50; /* Green border for earnings */
-  background-color: #f9f9f9;
-  padding: 1rem;
-  border-radius: 8px;
-  margin: 1rem 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.expenses-card {
-  border-left-color: #f44336; /* Red for expenses */
-}
-
-.amount {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #333;
-}
-
-.category {
-  font-size: 1rem;
-  color: #666;
-}
-
-/*  button style */
-
-.button-earnings {
-  cursor: pointer;
-  background-color: rgb(31, 95, 231); /* Initial blue color */
-  color: white;
-  border-radius: 10px;
-  font-size: 26px;
-  align-items: center;
+.body{
+  background-color:#0C0C0C;
+  margin: 0;
+  padding: 0;
+  gap: 0;
   box-sizing: border-box;
+}
+nav{
+  display: flex;
+  padding: 10px;
+  justify-items: center;
+  justify-content: space-between;
+  border-bottom: solid 1px grey;
+
+}
+a{
+  text-decoration: none;
+}
+.navList{
+  display: flex;
+  gap: 30px;
+
+}
+nav p{
+  cursor: pointer;
+  color: #D8D2C2;
+}
+.heroSection{
+  display: flex;
+  height: 250px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  height: 400px;
+}
+.heroSection h1{
+  color: #D8D2C2;
+}
+.heroSection p{
+  color: #4A4947;
+  font-size: 1.5rem;
+}
+.heroSection button{
+  color: white;
+  cursor: pointer;
+  background-color:black  ;
+  padding: 20px;
+  
+  border: 1px solid white;
+
+
+}
+.cta{
+  display: flex;
+  
+  background-color:#45474B ;
+  justify-content: space-around;
+  align-items: center;
+  height: 250px;
+  margin: 0;
+
+}
+.card {
+  background-color: #2c2b2b;
+  width: 300px;
+  border-radius: 15px;
+  
+  height: 140px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.card a {
+  cursor: pointer;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #ffffff;
+  
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.card a:hover {
+ text-decoration: dashed;
+}
+
+.card p {
+  padding: 10px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.5;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  
+}
+/* Centering the login form */
+.login-container {
   display: flex;
   justify-content: center;
-  padding: 10px 20px; /* Add some padding for better spacing */
+  align-items: center;
+  height: 100vh;
+  
+}
+
+/* Form styling */
+.login-form {
+  background: #2c2b2b;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  width: 320px;
+  text-align: center;
+}
+
+/* Heading */
+.login-form h2 {
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+/* Input fields */
+.login-form input {
+  width: 93%;
+  padding: 10px;
+  margin: 10px 0;
   border: none;
-  transition: all 0.3s ease-in-out; /* Smooth transition */
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Login button */
+.login-form button {
+  width: 100%;
+  padding: 10px;
+  background-color:#0B60B0;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-form button:hover {
+  background-color: black;
+}
+
+/* Register text */
+.register-text {
+  margin-top: 10px;
+  color: #fff;
+}
+
+.register-text a {
+  color:#0B60B0 ;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.register-text a:hover {
+  text-decoration: underline;
+}
+.login-text{
+  color: #D8D2C2;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 80px;
+  margin: auto;
+}
+footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.login-total{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 100px;
+  padding-right: 100px;
+  
+}
+.login-total a{
+  cursor: pointer;
+}
+.link-button {
+  background: none;
+  border: none;
+  color: black;
+  
+  cursor: pointer;
+  font-size: inherit;
+  margin-top: 10px;
+}
+
+.link-button:hover {
+  color: darkblue;
+}
+
+
+/* Earnings css */
+.earnings-card {
+  background-color: #0C0C0C;
+  padding: 20px;
+  
+  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.button-earnings {
+  background-color: green;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .button-earnings:hover {
-  transform: scale(1.05); /* Slightly enlarge the button */
-  background-color: rgb(80, 233, 177); /* Change to teal on hover */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  background-color: darkgreen;
+  transform: scale(1.05);
 }
 
+/* EXPENSES STYLES */
 
 .button-expenses {
-  cursor: pointer;
-  background-color: rgb(31, 95, 231); /* Initial blue color */
+  background: linear-gradient(45deg, #8B4513, #A0522D);
   color: white;
-  border-radius: 10px;
-  font-size: 26px;
-  align-items: center;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  padding: 10px 20px; /* Add some padding for better spacing */
+  font-size: 16px;
+  padding: 10px 20px;
   border: none;
-  transition: all 0.3s ease-in-out; /* Smooth transition */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
 .button-expenses:hover {
-  transform: scale(1.05); /* Slightly enlarge the button */
-  background-color: rgb(245, 95, 78); /* Change to teal on hover */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  background: linear-gradient(45deg, #A0522D, #D2691E);
 }
 
-/* Styling the list container */
-.interactive-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  max-width: 100%;
-  margin: 1rem ;
-  font-family: 'Roboto', sans-serif;
-  box-sizing: border-box;
-}
-
-/* Styling individual list items */
-.interactive-list-item {
-  padding: 10px;
-  /* background-color: #f9f9f9 */;
-  color: #1E90FF;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-}
-
-/* Hover effect */
-.interactive-list-item:hover {
-  background-color: #e0e0e0; /* Light gray background */
-  transform: translateY(-5px); /* Slightly lift the item */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* More prominent shadow */
+.button-expenses:active {
+  transform: scale(0.98);
 }
 
 
